@@ -9,6 +9,11 @@ This project demonstrates a hierarchical network topology using 3 Routers, 3 Swi
 - **End Devices:** 9 PCs (3 per Local Area Network)
 - **Routing Protocol:** Static Routing
 
+
+<img width="1920" height="1080" alt="Screenshot 2026-03-16 202000" src="https://github.com/user-attachments/assets/bfa336df-734c-4bdd-9648-b6ab401a1314" />
+
+
+
 ## IP Addressing Table
 
 ## Complete IP Addressing Table (3 Routers & 9 PCs)
@@ -35,6 +40,64 @@ This table outlines the full network configuration, including Local Area Network
 | **PC 8** | FastEth 0 | 192.168.80.3 | 255.255.255.0 | 192.168.80.1 | Switch 2 |
 | **PC 9** | FastEth 0 | 192.168.80.4 | 255.255.255.0 | 192.168.80.1 | Switch 2 |
 
+## Router Configuration 
+
+### Router 0
+1. Router> enable
+2. Router# configure terminal
+
+! WAN Interface (to Router 1)
+1. Router0(config)# interface Serial0/1/0
+2. Router0(config-if)# ip address 10.0.0.1 255.0.0.0
+3. Router0(config-if)# no shutdown
+4. Router0(config-if)# Exit
+
+! LAN Interface
+1. Router0(config)# interface GigabitEthernet0/0
+2. Router0(config-if)# ip address 192.168.60.1 255.255.255.0
+3. Router0(config-if)# no shutdown
+4. Router0(config-if)# Exit
+
+### Router 1 Configuration (Middle Router)
+
+1. Router> enable
+2. Router# configure terminal
+
+! LAN Interface
+1. Router1(config)# interface GigabitEthernet0/0
+2. Router1(config-if)# ip address 192.168.70.1 255.255.255.0
+3. Router1(config-if)# no shutdown
+4. Router1(config-if)# Exit
+
+! WAN Interface (to Router 0)
+1. Router1(config)# interface Serial0/1/0
+2. Router1(config-if)# ip address 10.0.0.2 255.0.0.0
+3. Router1(config-if)# no shutdown
+4. Router1(config-if)# Exit
+
+! WAN Interface (to Router 2)
+1. Router1(config)# interface Serial0/1/1
+2. Router1(config-if)# ip address 20.0.0.1 255.0.0.0
+3. Router1(config-if)# no shutdown
+
+### Router 2 Configuration
+
+1. Router> enable
+2. Router# configure terminal
+
+! LAN Interface
+1. Router2(config)# interface GigabitEthernet0/0
+2. Router2(config-if)# ip address 192.168.3.1 255.255.255.0
+3. Router2(config-if)# no shutdown
+4. Router2(config-if)# Exit
+
+! WAN Interface (to Router 1)
+1. Router2(config)# interface Serial0/0/0
+2. Router2(config-if)# ip address 10.1.1.6 255.255.255.252
+3. Router2(config-if)# no shutdown
+4. Router2(config-if)# Exit
+
+
 ## Static Route Configuration
 The following commands are manually added to each router to allow communication between different subnets:
 
@@ -54,4 +117,7 @@ R2(config)# ip route 192.168.80.0 255.255.255.0 20.0.0.2
 R3(config)# ip route 192.168.60.0 255.255.255.0 20.0.0.1
 
 R3(config)# ip route 192.168.70.0 255.255.255.0 20.0.0.1
+
+
+<img width="920" height="646" alt="image" src="https://github.com/user-attachments/assets/50d60c66-3f54-4f76-8659-0d6374160ae0" />
 
