@@ -17,7 +17,7 @@ This table outlines the full network configuration, including Local Area Network
 
 
 | Device | Interface | IP Address | Subnet Mask | Default Gateway | Connected To |
-| :--- | :--- | :--- | :--- | :--- | :--- |
+| --- | --- | --- | --- | --- | --- |
 | **Router 0** | Gig 0/0/0 | 192.168.60.1 | 255.255.255.0 | N/A | Switch 0 (LAN 1) |
 | **Router 0** | Ser 0/1/0 | 10.0.0.1 | 255.255.255.252 | N/A | Router 1 |
 | **Router 1** | Gig 0/0/0 | 192.168.70.1 | 255.255.255.0 | N/A | Switch 1 (LAN 2) |
